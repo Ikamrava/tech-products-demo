@@ -23,26 +23,23 @@ router
 	)
 	.all(methodNotAllowed);
 
-router
-	.route("/:id")
-	.patch(
-		sudoOnly,
-		validated({
-			body: Joi.object({
-				is_admin: Joi.boolean(),
-			}),
+router.route("/:id").patch(
+	sudoOnly,
+	validated({
+		body: Joi.object({
+			is_admin: Joi.boolean(),
 		}),
-		asyncHandler(async (req, res) => {
-			try {
-				res.json(await service.promote(req.params.id));
-			} catch (err) {
-				if (err instanceof MissingUser) {
-					return res.sendStatus(404);
-				}
-				throw err;
+	}),
+	asyncHandler(async (req, res) => {
+		try {
+			res.json(await service.promote(req.params.id));
+		} catch (err) {
+			if (err instanceof MissingUser) {
+				return res.sendStatus(404);
 			}
-		})
-	)
-	.all(methodNotAllowed);
+			throw err;
+		}
+	})
+);
 
 export default router;

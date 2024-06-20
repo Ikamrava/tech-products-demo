@@ -11,6 +11,7 @@ import {
 	NotFound,
 	Suggest,
 } from "./pages";
+import Resource from "./pages/Resource";
 
 const App = () => (
 	<>
@@ -24,6 +25,7 @@ const App = () => (
 					<Route path="/drafts" element={<Authenticated adminOnly />}>
 						<Route index element={<Drafts />} />
 					</Route>
+					<Route path="/resource/:id" element={<Resource />} />
 					<Route path="/suggest" element={<Authenticated />}>
 						<Route index element={<Suggest />} />
 					</Route>

@@ -23,6 +23,7 @@ export async function getById(id) {
 	if (!user) {
 		throw new MissingUser(id);
 	}
+
 	return user;
 }
 

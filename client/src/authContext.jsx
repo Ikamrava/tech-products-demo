@@ -49,6 +49,7 @@ export default function AuthProvider({ children }) {
 					return res.json();
 				}
 			})
+
 			.then(setPrincipal)
 			.finally(() => setLoading(false));
 	}, []);
